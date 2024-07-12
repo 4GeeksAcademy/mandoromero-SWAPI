@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useGlobalReducer from '/src/hooks/useGlobalReducer.jsx';
-import { addToFavorites } from '../actions';
+import { addToFavorites } from './Actions';
 
 const EntityCard = ({ entity, addToFavorites, entityType }) => (
   <div>

@@ -1,28 +1,61 @@
-import { useContext, createContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import store from '../store';
-import { Provider } from 'react-redux';
+export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
+export const SET_PEOPLE = 'SET_PEOPLE';
+export const SET_VEHICLES = 'SET_VEHICLES';
+export const SET_PLANETS = 'SET_PLANETS';
 
-const StoreContext = createContext();
+export const addToFavorites = (entity) => ({
+  type: ADD_TO_FAVORITES,
+  payload: entity,
+});
 
-export function StoreProvider({ children }) {
-  return (
-    <Provider store={store}>
-      <StoreContext.Provider value={{ store }}>
-        {children}
-      </StoreContext.Provider>
-    </Provider>
-  );
-}
+export const removeFromFavorites = (entity) => ({
+  type: REMOVE_FROM_FAVORITES,
+  payload: entity,
+});
 
-export default function useGlobalReducer() {
-  const context = useContext(StoreContext);
-  if (context === undefined) {
-    throw new Error('useGlobalReducer must be used within a StoreProvider');
+export const fetchPeople = () => async (dispatch) => {
+  try {
+    const response = await fetch('https://swapi.tech/api/people/');
+    const data = await response.json();
+    dispatch({ type: SET_PEOPLE, payload: data.results });
+  } catch (error) {
+    console.error('Failed to fetch people', error);
   }
-  return {
-    store: useSelector(state => state),
-    dispatch: useDispatch()
-  };
-}
+};
 
+export const fetchVehicles = () => async (dispatch) => {
+  try {
+    const response = await fetch('https://swapi.tech/api/vehicles/');
+    const data = await response.json();
+    dispatch({ type: SET_VEHICLES, payload: data.results });
+  } catch (error) {
+    console.error('Failed to fetch vehicles', error);
+  }
+};
+
+export const fetchPlanets = () => async (dispatch) => {
+  try {
+    const response = await fetch('https://swapi.tech/api/planets/');
+    const data = await response.json();
+    dispatch({ type: SET_PLANETS, payload: data.results });
+  } catch (error) {
+    console.error('Failed to fetch planets', error);
+  }
+};
+
+// Default export
+const Actions = {
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES,
+  SET_PEOPLE,
+  SET_VEHICLES,
+  SET_PLANETS,
+  addToFavorites,
+  removeFromFavorites,
+  fetchPeople,
+  fetchVehicles,
+  fetchPlanets,
+};
+
+export default Actions;
