@@ -1,4 +1,4 @@
-export function initializeStore() {
+export function initializeState() {
   const characters = JSON.parse(localStorage.getItem('characters')) || [];
   const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
   const planets = JSON.parse(localStorage.getItem('planets')) || [];
@@ -10,12 +10,12 @@ export function initializeStore() {
     characters,
     vehicles,
     planets,
-    favorites,
+    favorites
   };
 }
 
-// Initial state is now set by the initializeStore function
-export const initialState = initializeStore();
+// Initial state is now set by the initializeState function
+export const initialState = initializeState();
 
 // Reducer function
 export default function storeReducer(state = initialState, action = {}) {
