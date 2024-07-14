@@ -1,7 +1,6 @@
 import { useContext, useReducer, createContext } from "react";
 import storeReducer, { initializeState } from "../store";
 
-
 // Create a context to hold the global state of the application
 const StoreContext = createContext();
 

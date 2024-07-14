@@ -18,6 +18,7 @@ export const fetchPeople = () => async (dispatch) => {
   try {
     const response = await fetch('https://swapi.tech/api/people/');
     const data = await response.json();
+    localStorage.setItem('characters', JSON.stringify(data.results));
     dispatch({ type: SET_PEOPLE, payload: data.results });
   } catch (error) {
     console.error('Failed to fetch people', error);
@@ -28,6 +29,7 @@ export const fetchVehicles = () => async (dispatch) => {
   try {
     const response = await fetch('https://swapi.tech/api/vehicles/');
     const data = await response.json();
+    localStorage.setItem('vehicles', JSON.stringify(data.results)); // Store data in local storage
     dispatch({ type: SET_VEHICLES, payload: data.results });
   } catch (error) {
     console.error('Failed to fetch vehicles', error);
@@ -38,6 +40,7 @@ export const fetchPlanets = () => async (dispatch) => {
   try {
     const response = await fetch('https://swapi.tech/api/planets/');
     const data = await response.json();
+    localStorage.setItem('planets', JSON.stringify(data.results)); // Store data in local storage
     dispatch({ type: SET_PLANETS, payload: data.results });
   } catch (error) {
     console.error('Failed to fetch planets', error);

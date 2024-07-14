@@ -1,10 +1,17 @@
 import React from 'react';
 import EntityList from "../components/EntityList.jsx";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import {fetchPeople, fetchVehicles, fetchPlanets } from '../components/Actions.jsx';
 
 const Home = () => {
 
-  const { state } =useGlobalReducer();
+	const { state, dispatch } =useGlobalReducer();
+	
+	useEffect(() => {
+		dispatch(fetchPeople());
+		dispatch(fetchVehicle());
+		dispatch(fetchPlanets());
+	}, [dispatch]);
 
 	return (
 		<div className="contianer mt-5" style={{ fontFamily: 'StarJedi Special Edition, sans-serif' }}>

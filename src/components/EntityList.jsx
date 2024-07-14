@@ -1,31 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useGlobalReducer from '/src/hooks/useGlobalReducer.jsx';
+import useGlobalReducer from '/src/hooks/useGlobalReducer';
 import { addToFavorites } from './Actions';
 
-const EntityCard = ({ entity, entityType }) => (
+const EntityCard = ({ entity, entityType, onFavorite }) => (
   <div>
     <div className="card mx-2" 
-    style={{ width: "300px", height: "410px", marginBottom: "10px", display: "flex", border: "3px black solid", color: "#ffe81f", backgroundColor: "#000000" }}
+      style={{ width: "300px", height: "410px", marginBottom: "10px", display: "flex", border: "3px black solid", color: "#ffe81f", backgroundColor: "#000000" }}
     >
       <img 
-      className="card-img-top" 
+        className="card-img-top" 
         src={`https://starwars-visualguide.com/assets/img/${entityType}/${entity.uid}.jpg`} 
         alt={entity.name} 
         width="100" 
         height="225"
       />
       <div className="card-body" style={{ height: "5px", paddingBottom: "0", marginBottom: "0" }}>
-        <div class="card-title-container" style={{ display: "flex", marginBottom: "0" }}>
-          <div className="card-title" style={{ width: "85%" }}>
-            <h3 className="title" 
-              style={{ marginBottom: "0" }}>
-              {entity.name}
-            </h3>
+        <div style={{ display: "flex", marginBottom: "0" }}>
+          <div style={{ width: "85%" }}>
+            <h3 className="card-title" style={{ marginBottom: "0" }}>{entity.name}</h3>
           </div>
-          <button className="favorite-button" 
+          <button 
             style={{ border: "none", marginLeft: "5px", marginRight: "0", backgroundColor: "#000000" }} 
-            onClick={() => addToFavorites(entity)}
+            onClick={() => onFavorite(entity)}
           >
             ❤️
           </button>
@@ -59,7 +56,7 @@ const EntityList = ({ entities = [], entityType }) => {
             key={entity.uid}
             entityType={derivedEntityType}
             entity={entity}
-            addToFavorites={(entity) => addToFavorites(dispatch, entity)}
+            onFavorite={(entity) => dispatch(addToFavorites(entity))}
           />
         );
       })}
