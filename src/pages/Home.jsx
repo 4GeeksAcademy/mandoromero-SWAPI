@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import EntityList from "../components/EntityList.jsx";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import {fetchPeople, fetchVehicles, fetchPlanets } from '../components/Actions.jsx';
@@ -9,7 +9,7 @@ const Home = () => {
 	
 	useEffect(() => {
 		dispatch(fetchPeople());
-		dispatch(fetchVehicle());
+		dispatch(fetchVehicles());
 		dispatch(fetchPlanets());
 	}, [dispatch]);
 

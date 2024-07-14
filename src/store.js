@@ -1,3 +1,11 @@
+import {
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES,
+  SET_PEOPLE,
+  SET_VEHICLES,
+  SET_PLANETS
+} from './components/Actions';
+
 export function initializeState() {
   const characters = JSON.parse(localStorage.getItem('characters')) || [];
   const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
@@ -18,33 +26,33 @@ export function initializeState() {
 export const initialState = initializeState();
 
 // Reducer function
-export default function storeReducer(state = initialState, action = {}) {
+export default function storeReducer(state = initialState, action) {
   switch(action.type) {
-    case 'SET_PEOPLE':
+    case SET_PEOPLE:
       return {
         ...state,
         characters: action.payload,
       };
 
-    case 'SET_VEHICLES':
+    case SET_VEHICLES:
       return {
         ...state,
         vehicles: action.payload,
       };
 
-    case 'SET_PLANETS':
+    case SET_PLANETS:
       return {
         ...state,
         planets: action.payload,
       };
 
-    case 'ADD_TO_FAVORITES':
+    case ADD_TO_FAVORITES:
       return {
         ...state,
         favorites: [...state.favorites, action.payload],
       };
 
-    case 'REMOVE_FROM_FAVORITES':
+    case REMOVE_FROM_FAVORITES:
       return {
         ...state,
         favorites: state.favorites.filter(item => item.uid !== action.payload.uid),
