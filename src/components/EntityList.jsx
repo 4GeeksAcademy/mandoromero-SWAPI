@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useGlobalReducer from '/src/hooks/useGlobalReducer';
+import { useGlobalReducer } from '../hooks/useGlobalReducer';
 import { addToFavorites } from './Actions';
 
 const EntityCard = ({ entity, entityType, onFavorite }) => (
@@ -33,7 +33,7 @@ const EntityCard = ({ entity, entityType, onFavorite }) => (
   </div>
 );
 
-const EntityList = ({ entities = [], entityType }) => {
+const EntityList = ({ entities, entityType }) => {
   const { dispatch } = useGlobalReducer();
 
   return (

@@ -4,14 +4,14 @@ import {
   SET_PEOPLE,
   SET_VEHICLES,
   SET_PLANETS
-} from './components/Actions';
+} from './components/Actions';  // Corrected import path
 
 export function initializeState() {
   const characters = JSON.parse(localStorage.getItem('characters')) || [];
   const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
   const planets = JSON.parse(localStorage.getItem('planets')) || [];
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  
+
   return {
     message: null,
     cards: [],
@@ -27,7 +27,7 @@ export const initialState = initializeState();
 
 // Reducer function
 export default function storeReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SET_PEOPLE:
       return {
         ...state,

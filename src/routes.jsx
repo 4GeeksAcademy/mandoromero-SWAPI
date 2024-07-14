@@ -7,7 +7,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Details from "./components/Details";
 import Favorites from "./components/Favorites";
-import Actions from "./components/Actions";
+
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,8 +15,7 @@ export const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="details/:type/:id" element={<Details />} />
       <Route path="favorites" element={<Favorites />} />
-      <Route path="actions" element={<Actions />} />
-   
     </Route>
   )
 );
+
