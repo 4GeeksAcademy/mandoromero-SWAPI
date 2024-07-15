@@ -65,3 +65,4 @@ const EntityList = ({ entities, entityType }) => {
 };
 
 export default EntityList;
+

@@ -4,18 +4,16 @@ import {
   REMOVE_FROM_FAVORITES,
   SET_PEOPLE,
   SET_VEHICLES,
-  SET_PLANETS,
+  SET_PLANETS
 } from '../components/Actions';
 
-// Define initial state
 const initialState = {
   characters: [],
   vehicles: [],
   planets: [],
-  favorites: [],
+  favorites: []
 };
 
-// useGlobalReducer.jsx
 const storeReducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_FAVORITES:

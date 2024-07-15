@@ -13,8 +13,6 @@ export function initializeState() {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
   return {
-    message: null,
-    cards: [],
     characters,
     vehicles,
     planets,
@@ -22,43 +20,54 @@ export function initializeState() {
   };
 }
 
-// Initial state is now set by the initializeState function
 export const initialState = initializeState();
 
-// Reducer function
-export default function storeReducer(state = initialState, action) {
+const storeReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case SET_PEOPLE:
-      return {
+      newState = {
         ...state,
         characters: action.payload,
       };
+      localStorage.setItem('characters', JSON.stringify(newState.characters));
+      return newState;
 
     case SET_VEHICLES:
-      return {
+      newState = {
         ...state,
         vehicles: action.payload,
       };
+      localStorage.setItem('vehicles', JSON.stringify(newState.vehicles));
+      return newState;
 
     case SET_PLANETS:
-      return {
+      newState = {
         ...state,
         planets: action.payload,
       };
+      localStorage.setItem('planets', JSON.stringify(newState.planets));
+      return newState;
 
     case ADD_TO_FAVORITES:
-      return {
+      newState = {
         ...state,
         favorites: [...state.favorites, action.payload],
       };
+      localStorage.setItem('favorites', JSON.stringify(newState.favorites));
+      return newState;
 
     case REMOVE_FROM_FAVORITES:
-      return {
+      newState = {
         ...state,
         favorites: state.favorites.filter(item => item.uid !== action.payload.uid),
       };
+      localStorage.setItem('favorites', JSON.stringify(newState.favorites));
+      return newState;
 
     default:
       throw new Error('Unknown action.');
   }
-}
+};
+
+export default storeReducer;

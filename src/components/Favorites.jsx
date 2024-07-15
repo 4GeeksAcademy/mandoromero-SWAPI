@@ -10,7 +10,7 @@ const Favorites = () => {
   return (
     <div className="container">
       <h1>Favorites</h1>
-      <EntityList entities={favorites} entityType="favorites" addToFavorites={(entity) => dispatch(removeFromFavorites(entity))} />
+      <EntityList entities={favorites} entityType="favorites" onFavorite={(entity) => dispatch(removeFromFavorites(entity))} />
     </div>
   );
 };
