@@ -8,47 +8,39 @@ const Navbar = () => {
   const { favorites } = state;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5" style={{ fontFamily: 'SF Distant Galaxy, sans-serif' }}>
-      <Link className="navbar-brand" to="/" style={{ marginLeft: '400px', fontSize: '30px', color: '#FFE81F' }}>
+    <nav className="navbar navbar-expand-lg navbar-black bg-black mb-5" style={{ fontFamily: 'SF Distant Galaxy, sans-serif'  }}>
+      <Link className="navbar-brand" to="/" style={{ marginLeft: '250px', fontSize: '50px', color: '#FFE81F' }}>
         Star Wars Databank
       </Link>
       <div className="collapse navbar-collapse">
-        <div className="navbar-nav ml-auto">
-          <Link
-            className="btn btn-secondary"
-            style={{ marginLeft: '100px', color: '#FFE81F' }}
-            to="/favorites"
-          >
-            Favorites
-          </Link>
-          <div className="dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style={{ color: '#FFE81F' }}
+        <div className="navbar-nav ml-auto d-flex align-items-center">
+          <button style={{ width: "150px", marginLeft: "75px", backgroundColor: "#ffe81f", borderRadius: "10%"
+           }}>
+            <Link
+              className="btn"
+              style={{ color: '#000000', fontSize: "16px" }}
+              to="/favorites"
             >
-              Favorites
-            </button>
-            <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
-              {favorites.map((item, index) => (
-                <li key={index}>
-                  <span className="dropdown-item pe-1">
-                    {item.name + ' '}
-                    <button className="btn btn-secondary delete-button" onClick={() => dispatch(removeFromFavorites(item))}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
-                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                      </svg>
-                    </button>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              Go to Favorites
+            </Link>
+          </button>
         </div>
       </div>
+      <ul id="favorites-list" className="list-group position-absolute" style={{ right: '10px', top: '60px', display: 'none', backgroundColor: '#343a40' }}>
+        {favorites.map((item, index) => (
+          <li key={index} className="list-group-item d-flex justify-content-between align-items-center" style={{ color: '#FFE81F', backgroundColor: '#343a40' }}>
+            {item.name}
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => dispatch(removeFromFavorites(item))}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+              </svg>
+            </button>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
