@@ -4,12 +4,13 @@ import ScrollToTop from "../components/ScrollToTop";
 import Navbar from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
+
 // Base component that maintains the navbar and footer throughout the page and the scroll to top functionality.
 const Layout = () => {
   return (
     <ScrollToTop>
       <Navbar />
-      <div className="content">
+      <div className="content bg-black">
         <Outlet />  {/* This is where nested routes will be rendered */}
       </div>
       <Footer />

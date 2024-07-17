@@ -21,7 +21,7 @@ let { id, type } = useParams();
   }, [id, type]);
 
   return (
-    <div className="container">
+    <div className="container" style={{ fontFamily: 'SF Distant Galaxy, sans-serif' }}>
       {entity ? (
         <>
           <h1>{entity.name}</h1>
