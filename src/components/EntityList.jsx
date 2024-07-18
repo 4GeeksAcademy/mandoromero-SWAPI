@@ -30,8 +30,9 @@ const EntityCard = ({ entity, entityType, onFavorite }) => {
               <p className="card-title" style={{ marginBottom: "0" }}>{entity.name}</p>
             </div>
             <button
+              id="favorite"
               style={{ border: "none", marginLeft: "5px", marginRight: "0", backgroundColor: "#000000", color: "#FFE81F" }}
-              onClick={() => onFavorite(entity)}
+              onClick={() => onFavorite(entity)} onmouseover="this.style.color=#bc5448"
             >
               ❤️
             </button>
@@ -42,6 +43,7 @@ const EntityCard = ({ entity, entityType, onFavorite }) => {
     </div>
   );
 };
+
 
 const EntityList = ({ entities, entityType, onFavorite }) => {
   const { dispatch } = useGlobalReducer();

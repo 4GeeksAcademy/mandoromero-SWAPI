@@ -20,7 +20,7 @@ const Home = () => {
       <EntityList entities={state.characters} entityType="characters" />
       <h2 style={{ color: "#ffe81f" }}>Vehicles</h2>
       <EntityList entities={state.vehicles} entityType="vehicles" />
-      <h2 >Planets</h2>
+      <h2 style={{ color: "#ffe81f" }}>Planets</h2>
       <EntityList entities={state.planets} entityType="planets" />
     </div>
   );

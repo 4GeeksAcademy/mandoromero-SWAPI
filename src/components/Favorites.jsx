@@ -8,7 +8,7 @@ const Favorites = () => {
   const { favorites } = state;
 
   return (
-    <div className="container">
+    <div className="container" style={{ fontFamily: "SF Distant Galaxy, sans-serif", color: "#ffe81f"  }}>
       <h1>Favorites</h1>
       <EntityList entities={favorites} entityType="favorites" onFavorite={(entity) => dispatch(removeFromFavorites(entity))} />
     </div>
