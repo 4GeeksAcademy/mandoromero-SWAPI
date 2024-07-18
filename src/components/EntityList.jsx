@@ -32,7 +32,7 @@ const EntityCard = ({ entity, entityType, onFavorite }) => {
             <button
               id="favorite"
               style={{ border: "none", marginLeft: "5px", marginRight: "0", backgroundColor: "#000000", color: "#FFE81F" }}
-              onClick={() => onFavorite(entity)} onmouseover="this.style.color=#bc5448"
+              onClick={() => onFavorite(entity)} 
             >
               ❤️
             </button>
